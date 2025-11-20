@@ -1,0 +1,1 @@
+get-vm | Select-Object Name, PowerState, VMHost, @{N="Configured OS";E={$_.extensiondata.Config.GuestFullName}}, @{N="Running OS";E={$_.extensiondata.Guest.GuestFullName}}, Notes
