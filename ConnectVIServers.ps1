@@ -3,13 +3,9 @@ $passwd = Read-Host -Prompt "Password: " -MaskInput
 
 # Define vCenter server details
 $vcenterServers = @(
-    @{ Name = "HO-rack-1-vc-1"; Server = "rack-1-vc-1.vcfho.secure.capfed.com" },
-    @{ Name = "HO-rack-1-vc-3"; Server = "rack-1-vc-3.vcfho.secure.capfed.com" },
-    @{ Name = "HO-vcenter-1"; Server = "vcenter-1.vcfho.secure.capfed.com" },
-    @{ Name = "NH-rack-1-vc-2"; Server = "rack-1-vc-2.vcfnh.secure.capfed.com" },
-    @{ Name = "NH-rack-1-vc-3"; Server = "rack-1-vc-3.vcfnh.secure.capfed.com" },
-    @{ Name = "NH-vcenter-1"; Server = "vcenter-1.vcfnh.secure.capfed.com" },
-    @{ Name = "BR-cfbrvctr01"; Server = "cfbrvctr01.secure.capfed.com" }
+    @{ Name = "<VCenter1 Common Name>"; Server = "<VCenter1 FQDN>" },
+    @{ Name = "<VCenter2 Common Name>"; Server = "<VCenter2 FQDN>" }
+    ###  Add as many VCenter servers as needed  ###
 )
 
 # Loop through each vCenter server and attempt to connect
@@ -29,4 +25,5 @@ foreach ($vcenter in $vcenterServers) {
     } catch {
         Write-Host "Error connecting to $($vcenter.Name) ($($vcenter.Server)): $($_.Exception.Message)" -ForegroundColor Red
     }
+
 }
